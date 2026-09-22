@@ -1,0 +1,33 @@
+# dependencies
+node_modules
+
+# env files
+.env
+
+# coverage
+coverage
+coverage.json
+
+# typechain
+typechain
+typechain-types
+
+# hardhat files
+cache
+artifacts
+
+# zkSync files
+artifacts-zk
+cache-zk
+
+# deployments
+deployments
+
+# typescript
+*.tsbuildinfo
+
+# other
+temp
+
+# hardhat-gas-reporter writes this report whenever CI is set
+gasReporterOutput.json

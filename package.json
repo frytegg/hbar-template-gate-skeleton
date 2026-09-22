@@ -1,0 +1,65 @@
+{
+  "name": "sh",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/hardhat",
+      "packages/nextjs"
+    ]
+  },
+  "scripts": {
+    "build": "yarn next:build",
+    "check:all": "yarn lint:strict && yarn typecheck && yarn check:tools && yarn probe:routes:check && yarn check:docs",
+    "check:docs": "node tools/checks/run-all.mjs",
+    "check:tools": "yarn hardhat:lint:tools && yarn hardhat:check-types:tools && node tools/checks/run-tests.mjs && node --test tools/gate/routes.test.mjs",
+    "dev": "yarn next:dev",
+    "format": "yarn next:format && yarn hardhat:format && yarn hardhat:format:tools",
+    "gate:local": "bash tools/gate/local.sh",
+    "hardhat:account": "yarn workspace @sh/hardhat account",
+    "hardhat:account:generate": "yarn workspace @sh/hardhat account:generate",
+    "hardhat:account:import": "yarn workspace @sh/hardhat account:import",
+    "hardhat:account:reveal-pk": "yarn workspace @sh/hardhat account:reveal-pk",
+    "hardhat:chain": "yarn workspace @sh/hardhat chain",
+    "hardhat:check-types": "yarn workspace @sh/hardhat check-types",
+    "hardhat:check-types:tools": "yarn workspace @sh/hardhat check-types:tools",
+    "hardhat:clean": "yarn workspace @sh/hardhat clean",
+    "hardhat:compile": "yarn workspace @sh/hardhat compile",
+    "hardhat:deploy": "yarn workspace @sh/hardhat deploy",
+    "hardhat:deploy:localhost": "yarn hardhat:deploy --network localhost",
+    "hardhat:deploy:mainnet": "yarn hardhat:deploy --network hederaMainnet",
+    "hardhat:deploy:testnet": "yarn hardhat:deploy --network hederaTestnet",
+    "hardhat:flatten": "yarn workspace @sh/hardhat flatten",
+    "hardhat:format": "yarn workspace @sh/hardhat format",
+    "hardhat:format:tools": "yarn workspace @sh/hardhat format:tools",
+    "hardhat:lint": "yarn workspace @sh/hardhat lint",
+    "hardhat:lint-staged": "yarn workspace @sh/hardhat lint-staged",
+    "hardhat:lint:tools": "yarn workspace @sh/hardhat lint:tools",
+    "hardhat:test": "yarn workspace @sh/hardhat test",
+    "lint": "yarn next:lint && yarn hardhat:lint",
+    "lint:strict": "yarn next:lint --max-warnings=0 && yarn hardhat:lint --max-warnings=0",
+    "next:build": "yarn workspace @sh/nextjs build",
+    "next:check-types": "yarn workspace @sh/nextjs check-types",
+    "next:dev": "yarn workspace @sh/nextjs dev",
+    "next:format": "yarn workspace @sh/nextjs format",
+    "next:lint": "yarn workspace @sh/nextjs lint",
+    "next:serve": "yarn workspace @sh/nextjs serve",
+    "next:start": "yarn workspace @sh/nextjs start",
+    "probe:routes": "npm ci --omit=dev --prefix tools/route-probe && npm run browsers --prefix tools/route-probe && node tools/route-probe/src/cli.mjs --serve",
+    "probe:routes:check": "npm ci --prefix tools/route-probe && npm run test --prefix tools/route-probe && npm run check-types --prefix tools/route-probe",
+    "serve": "yarn next:serve",
+    "test": "yarn hardhat:test",
+    "typecheck": "yarn next:check-types && yarn hardhat:check-types",
+    "postinstall": "husky",
+    "precommit": "lint-staged",
+    "lint-staged": "lint-staged"
+  },
+  "packageManager": "yarn@3.2.3",
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  },
+  "engines": {
+    "node": ">=20.18.3"
+  }
+}
