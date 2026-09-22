@@ -1,7 +1,7 @@
 # hbar-template-gate-skeleton
 
 A minimal, Hardhat-only Scaffold-HBAR template that exists to be scaffolded. GitHub Actions scaffolds this repository through the published `create-scaffold-hbar` CLI, from GitHub, the way any community template is scaffolded, and checks the project that comes out: strict lint, types, production build, and a boot with no env file.
-It is not a finished template and ships no product of its own: the app is the blank Scaffold-HBAR starter with Hardhat selected, minus its default keys, dead scripts and Foundry leftovers. It stands in for a template that is not public yet, whose `package.json` files, lockfile, `template.json`, configuration files and gate scripts (`tools/gate/`) are copied here when they change.
+It is not a finished template and ships no product of its own: the app is the blank Scaffold-HBAR starter with Hardhat selected, minus its default keys, dead scripts and Foundry leftovers. Its `package.json` files, lockfile, `template.json`, configuration files and gate scripts (`tools/gate/`) are the parts that decide how a template scaffolds, and they are what this repository exists to exercise.
 
 ## Scaffold it
 
@@ -68,7 +68,7 @@ There is no fallback key: the upstream configuration fell back to Hardhat's well
 
 ## What this skeleton does not prove
 
-- Anything about the final tree of the template it stands in for: that template has its own code, routes and checks. This repository checks the scaffold path and the manifest mechanics, nothing more.
+- Anything about a template built on this base: its own code, routes and checks are its own. This repository checks the scaffold path and the manifest mechanics, nothing more.
 - The interactive path, prompts answered by hand: a runner has no TTY.
 - Browser console errors: no workflow here loads the pages in a browser; `lint.yaml` runs the route probe's own tests only.
 - Hedera mainnet: nothing here has been deployed to it or tested against it.

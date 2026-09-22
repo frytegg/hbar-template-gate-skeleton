@@ -1,7 +1,7 @@
 # Agent guide
 
 Gate skeleton: a minimal Hardhat-only Scaffold-HBAR template that GitHub Actions scaffolds through the published CLI. A Next.js app in `packages/nextjs`, a Hardhat package in `packages/hardhat`, and the tooling that checks both in `tools/`. Claude Code loads this file through `CLAUDE.md`.
-The files that decide how a template scaffolds (the `package.json` files, the lockfile, `template.json` apart from its name and description, the configuration files and the gate scripts in `tools/gate/`) mirror a template that is not public yet: change them there first, then copy them here.
+The files that decide how a template scaffolds (the `package.json` files, the lockfile, `template.json` apart from its name and description, the configuration files and the gate scripts in `tools/gate/`) are the subject of the gate: a change to any of them is a change to what the workflows prove, so say so in the commit body.
 Run every command from the repository root. The commands below are spelled for the package manager this project was scaffolded with; the CLI rewrites them when it scaffolds for npm.
 
 Stack: Node.js 20.18.3 or later, TypeScript in strict mode, Next.js 15 (app directory), RainbowKit 2.2.9, wagmi 2.19.5, viem 2.39.0, DaisyUI 5, Hardhat 2.22.19 with hardhat-deploy, Solidity 0.8.28.
