@@ -138,7 +138,7 @@ Always:
 - keep keys out of files: the deployer key lives encrypted in `packages/hardhat/.env`, or in the shell for one command.
 
 Ask first:
-- adding or upgrading a dependency: it changes the lockfile, and an install under `CI=true` fails when the committed lockfile would have to change;
+- adding or upgrading a dependency: it changes the lockfile, and an install under `CI=true` fails when the committed lockfile would have to change. Tailwind is held at 4.2.1 by exact versions in `packages/nextjs/package.json`, because a range floats in an npm-mode install: 4.3.4 needs an ESM-only `magic-string`, which Node.js 20.18 cannot load, and `next build` stops there;
 - renaming or removing a root script: the gate calls `lint:strict`, `typecheck`, `build`, `test` and `serve`, `lint.yaml` calls `check:tools` and `probe:routes:check`, and the closing message of `template.json` names others;
 - changing `template.json`, a workflow, or `.gitleaks.toml`;
 - anything that deploys, signs or spends on a live network.
